@@ -21,7 +21,7 @@ SERVER_PORT=4000
 RELOAD_PORT=35729
 
 # Docker-compose project name (container name prefix)
-PROJECT_NAME       ?= iac
+PROJECT_NAME       ?= docs
 # dcape containers name prefix
 DCAPE_PROJECT_NAME ?= dcape
 # dcape network attach to
