@@ -1,5 +1,5 @@
-# Document title
+# Заголовок
 
-## Part 1
+## Часть 1
 
-Part 1 text
+Текст части 1
