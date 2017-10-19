@@ -98,7 +98,7 @@ down: dc
 # Use: CMD=ls make nodejs
 ## compile pgm packages
 book-cmd:
-	@[[ $$APP_BUILD == "yes" ]] && docker run --rm -it \
+	@[[ $$APP_BUILD == "yes" ]] && docker run --rm \
 	  -v /etc/timezone:/etc/timezone:ro \
 	  -v /etc/localtime:/etc/localtime:ro \
 	  -v $$PWD:/home/app \
