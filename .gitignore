@@ -19,4 +19,4 @@ _book
 html
 log
 web_loaders
-.config
+.env

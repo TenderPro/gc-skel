@@ -11,25 +11,25 @@
 
 См. [INSTALL.md](INSTALL.md)
 
-### Настройка
+### Настройка для dcape
 
-Создаем файл настроек .config
+Создаем файл настроек .env
 ```
-make .config
+make .env
 ```
 
-В файле .config хранятся индивидуальные настройки каждой копии сайта. В т.ч. переменные
+В файле .env хранятся индивидуальные настройки каждой копии сайта. В т.ч. переменные
 
 * **APP_SITE** - имя хоста проекта (doc.dev.lan)
 
 Создание файла с указанием настроек:
 ```
-APP_SITE=test.dev.lan make .config
+APP_SITE=test.dev.lan make .env
 ```
 
 Если хост **APP_SITE** не прописан в DNS, его надо указать в hosts:
 ```
-sudo echo "127.0.0.1 doc.dev.lan" >> /etc/hosts
+sudo -c 'echo "127.0.0.1 doc.dev.lan" >> /etc/hosts'
 ```
 
 ## Сборка проекта
@@ -38,9 +38,8 @@ sudo echo "127.0.0.1 doc.dev.lan" >> /etc/hosts
 * `make book-pdf` - генерация pdf
 * `make book-epub` - генерация epub
 * `make book-all` - генерация html, pdf, epub
-* `make start` - book-all и запуск вебсервера http://$APP_SITE
-
-**Важно** перед выполнением этих команд надо проверить отсутствие созданного ранее контейнера c image lekovr/consup_gitbook:latest (его не должно быть в выводе `docker ps -a`).
+* `make book-serve` - запуск вебсервера http://localhost:4000 с горячим обновлением контента
+* `make start` - book-all и запуск вебсервера в среде dcape
 
 ## Кастомизация
 

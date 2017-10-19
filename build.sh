@@ -15,24 +15,23 @@ shift
 export PATH=$PATH:/home/app/web_loaders/.bin
 
 if [[ $CMD == "init" ]] ; then
-  gosu $APPUSER gitbook init
+  gitbook init
   exit
 elif [[ $CMD == "serve" ]] ; then
-  gosu $APPUSER gitbook serve
+  gitbook serve
   exit
 elif [[ $CMD == "install" ]] || [[ $CMD == "all" ]] ; then
-  chown $APPUSER /home/app
-  gosu $APPUSER gitbook install
+  gitbook install
   [[ $CMD == "install" ]] && exit
 fi
 
-[ -d _book ] || { mkdir _book ; chown $APPUSER _book ; }
+[ -d _book ] || mkdir _book
 
 # build failed if bad link exists
 [ -L html ] && rm html
 
 # build
 
-if [[ $CMD == "all" ]] || [[ "$CMD" == "html" ]] ; then gosu $APPUSER gitbook build ./ ; fi
-if [[ $CMD == "all" ]] || [[ "$CMD" == "pdf" ]]  ; then gosu $APPUSER gitbook pdf  ./ _book/${PROJECT}.pdf ; fi
-if [[ $CMD == "all" ]] || [[ "$CMD" == "epub" ]] ; then gosu $APPUSER gitbook epub ./ _book/${PROJECT}.epub ; fi
+if [[ $CMD == "all" ]] || [[ "$CMD" == "html" ]] ; then gitbook build ./ ; fi
+if [[ $CMD == "all" ]] || [[ "$CMD" == "pdf" ]]  ; then gitbook pdf  ./ _book/${PROJECT}.pdf ; fi
+if [[ $CMD == "all" ]] || [[ "$CMD" == "epub" ]] ; then gitbook epub ./ _book/${PROJECT}.epub ; fi
